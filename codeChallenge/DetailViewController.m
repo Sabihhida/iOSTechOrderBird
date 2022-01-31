@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "codeChallenge-Swift.h"
 
 @interface DetailViewController ()
 
@@ -16,17 +17,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setInterface];
+   
     // Do any additional setup after loading the view.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)setInterface {
+    [self.imageView imageFromServerURLWithUrlString:self.photo[@"url_m"] PlaceHolderImage:[UIImage imageNamed:@"defaultPhoto"] completion:^(UIImage * _Nonnull image) {
+        self.imageView.image = image;
+    }];
+    self.titleLabel.text = self.photo[@"title"];
+    self.detailTextView.text = self.photo[@"description"][@"_content"];
 }
-*/
 
 @end

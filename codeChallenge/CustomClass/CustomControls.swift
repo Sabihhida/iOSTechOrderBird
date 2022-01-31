@@ -11,7 +11,7 @@ import UIKit
 extension UIImageView {
 
     @objc public func imageFromServerURL(urlString: String, PlaceHolderImage:UIImage,completion:@escaping (UIImage) -> ()) {
-
+        debugPrint(urlString)
         URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
 
             if error != nil {
@@ -27,5 +27,6 @@ extension UIImageView {
 
         }).resume()
     }}
+
 
 

@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "CustomCell.h"
-#import "codeChallenge-Swift.h"
 //https://www.flickr.com/services/api/flickr.photos.search.html
 //https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=2ed35a9f4fda03bc96e73dbd03602780&photo_id=51854267235&format=json&nojsoncallback=1
 NSString *const FlickrAPIKey = @"2ed35a9f4fda03bc96e73dbd03602780";
@@ -16,14 +15,12 @@ NSString *const FlickrAPIKey = @"2ed35a9f4fda03bc96e73dbd03602780";
 
 @interface ViewController ()
 @property (nonatomic, readwrite) NSArray *photos;
-@property (nonatomic) NSInteger imagePageOffset;
 
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
-    self.imagePageOffset = 1;
     [self loadFlickrPhotos];
     
     UINib *cellNib = [UINib nibWithNibName:@"CustomCell" bundle:nil];
@@ -45,66 +42,19 @@ NSString *const FlickrAPIKey = @"2ed35a9f4fda03bc96e73dbd03602780";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *identifier = @"CustomCell";
-    
-     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    //if (cell == nil) {
-      //  cell = [[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-   // }
-    
-    
-    cell.imageTitleCell.text = [[self.photos objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.imageSubtitleCell.text = [[[self.photos objectAtIndex:indexPath.row] objectForKey:@"description"] objectForKey:@"_content"];;
-    [cell.imageView imageFromServerURLWithUrlString:[[self.photos objectAtIndex:indexPath.row] objectForKey:@"url_t"] PlaceHolderImage:[UIImage imageNamed:@"defaultPhoto"] completion:^(UIImage * _Nonnull image) {
-        cell.imageCell.image = image;
-    }];
-    
-
-/*
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-
-    if (!error) {
-
-        NSDictionary *photos = [[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error] objectForKey:@"photos"];
-        NSArray *photo = [photos objectForKey:@"photo"];
-        NSString *urlPhotoString = [[photo objectAtIndex:self.imagePageOffset-1] objectForKey:@"url_t"];
-        NSURL *urlPhoto = [NSURL URLWithString:urlPhotoString];
-        
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:urlPhoto];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        
-        cell.imageCell.image = image;
-        self.imagePageOffset += 1;
-        
-        self.reloadBlock = ^{
-            [self reload];
-        };
-        
-        
-        
-        dispatch_async(dispatch_get_main_queue(), self.reloadBlock);
-    }*/
-    
-    
-//    typedef void(^reloadBlock)() = ^() {
-//        [self reload];
-//    };
-    
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    [cell setData:_photos[indexPath.row]];
     return cell;
 }
 
-- (void)reload {
-     [self.tableView reloadData];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self navigateDetailWithPhoto:[self.photos objectAtIndex:indexPath.row]];
 }
 
 - (void)loadFlickrPhotos {
     
-    NSString *urlString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&per_page=10&format=json&nojsoncallback=1&extras=date_taken,description,tags,url_t", FlickrAPIKey, @"cooking"];
-    
+    NSString *urlString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&per_page=10&format=json&nojsoncallback=1&extras=date_taken,description,tags,url_t,url_m", FlickrAPIKey, @"cooking"];
+    NSLog(@"%@",urlString);
     __weak ViewController *weakSelf = self;
     [[Network sharedManager] getUrlRequestWithUrl:urlString completionHandler:^( id _Nonnull res) {
         weakSelf.photos = [[res objectForKey:@"photos"] objectForKey:@"photo"];
@@ -113,21 +63,7 @@ NSString *const FlickrAPIKey = @"2ed35a9f4fda03bc96e73dbd03602780";
         });
 
     }];
-    /*NSURL *URL = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    
-    if (!error) {
-        NSDictionary *photosDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        self.photos = [[photosDictionary objectForKey:@"photos"] objectForKey:@"photo"];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
-    }*/
+   
 }
 
 
