@@ -19,6 +19,9 @@
 		56DE712427A7BF1800488FF6 /* FlickrApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE712327A7BF1800488FF6 /* FlickrApi.swift */; };
 		56DE712727A7C1F900488FF6 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE712627A7C1F900488FF6 /* NetworkServiceError.swift */; };
 		56DE712927A7C41F00488FF6 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE712827A7C41F00488FF6 /* NetworkingProtocol.swift */; };
+		760E7B0327A83DB800C1F5C6 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760E7B0227A83DB800C1F5C6 /* Photo.swift */; };
+		760E7B0527A843C500C1F5C6 /* CustomControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760E7B0427A843C500C1F5C6 /* CustomControls.swift */; };
+		76437B7727A8722F0020ADED /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76437B7627A8722F0020ADED /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,10 @@
 		56DE712327A7BF1800488FF6 /* FlickrApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrApi.swift; sourceTree = "<group>"; };
 		56DE712627A7C1F900488FF6 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
 		56DE712827A7C41F00488FF6 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
+		760E7B0227A83DB800C1F5C6 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		760E7B0427A843C500C1F5C6 /* CustomControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControls.swift; sourceTree = "<group>"; };
+		76437B7527A8722F0020ADED /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		76437B7627A8722F0020ADED /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +79,15 @@
 		3E15BBE1208754FE0029597E /* codeChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				760E7B0127A83D9F00C1F5C6 /* Model */,
 				56DE712527A7C1BF00488FF6 /* CustomClass */,
 				56DE711F27A7BDA500488FF6 /* Network */,
 				3E15BBE2208754FE0029597E /* AppDelegate.h */,
 				3E15BBE3208754FE0029597E /* AppDelegate.m */,
 				3E15BBE5208754FE0029597E /* ViewController.h */,
 				3E15BBE6208754FE0029597E /* ViewController.m */,
+				76437B7527A8722F0020ADED /* DetailViewController.h */,
+				76437B7627A8722F0020ADED /* DetailViewController.m */,
 				3E15BBF8208774B10029597E /* CustomCell.h */,
 				3E15BBF9208774B10029597E /* CustomCell.m */,
 				3E15BBFB20879B4B0029597E /* CustomCell.xib */,
@@ -105,8 +115,17 @@
 		56DE712527A7C1BF00488FF6 /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
+				760E7B0427A843C500C1F5C6 /* CustomControls.swift */,
 			);
 			path = CustomClass;
+			sourceTree = "<group>";
+		};
+		760E7B0127A83D9F00C1F5C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				760E7B0227A83DB800C1F5C6 /* Photo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,9 +202,12 @@
 			files = (
 				56DE712727A7C1F900488FF6 /* NetworkServiceError.swift in Sources */,
 				56DE712227A7BE4D00488FF6 /* Network.swift in Sources */,
+				760E7B0527A843C500C1F5C6 /* CustomControls.swift in Sources */,
 				3E15BBE7208754FE0029597E /* ViewController.m in Sources */,
+				760E7B0327A83DB800C1F5C6 /* Photo.swift in Sources */,
 				3E15BBF2208754FE0029597E /* main.m in Sources */,
 				3E15BBFA208774B10029597E /* CustomCell.m in Sources */,
+				76437B7727A8722F0020ADED /* DetailViewController.m in Sources */,
 				56DE712927A7C41F00488FF6 /* NetworkingProtocol.swift in Sources */,
 				3E15BBE4208754FE0029597E /* AppDelegate.m in Sources */,
 				56DE712427A7BF1800488FF6 /* FlickrApi.swift in Sources */,

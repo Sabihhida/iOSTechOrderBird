@@ -15,7 +15,7 @@
     // Initialization code
     
     
-    self.imageTitleCell.translatesAutoresizingMaskIntoConstraints = YES;
+    //self.imageTitleCell.translatesAutoresizingMaskIntoConstraints = YES;
 }
 
 
