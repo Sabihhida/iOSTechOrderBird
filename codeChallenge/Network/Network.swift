@@ -12,8 +12,7 @@ typealias ResponseCompletion = ([AnyHashable : Any]) -> ()
     static let shared = Network()
     
     @objc func getFlickrList(tag: String, pages: String,optional: [String:String]?, completionHandler: @escaping ResponseCompletion) {
-       // let date = sorted ? "date-taken-asc": "date-taken-desc"
-        var params = ["tags":tag,"extras":"date_taken,description,tags,url_t,url_m","per_page":pages,"sort":"date-taken-desc"]
+        var params = ["tags":tag,"extras":"date_taken,description,tags,url_t,url_m","per_page":pages]
         if let optionalParams = optional, !optionalParams.isEmpty {
             params = optionalParams
         }

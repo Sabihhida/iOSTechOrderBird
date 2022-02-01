@@ -10,10 +10,8 @@ import Foundation
 import Metal
 
 protocol UrlRequestProtocol {
-    
     var baseURL: String { get }
     var apiKey:String { get }
-    
 }
 
 class FlickrApi:UrlRequestProtocol {

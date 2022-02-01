@@ -9,11 +9,8 @@
 #import "ViewController.h"
 #import "CustomCell.h"
 //https://www.flickr.com/services/api/flickr.photos.search.html
-//https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=2ed35a9f4fda03bc96e73dbd03602780&photo_id=51854267235&format=json&nojsoncallback=1
-
 @interface ViewController ()
 @property (nonatomic, readwrite) NSArray *photos;
-
 @end
 
 @implementation ViewController
@@ -62,14 +59,12 @@
 }
 
 - (void)loadFlickrPhotos:(NSDictionary*)optional {
-    
     __weak ViewController *weakSelf = self;
     [[Network sharedManager] getFlickrListWithTag:@"cooking" pages:@"10" optional:optional completionHandler:^( id _Nonnull res) {
         weakSelf.photos = [[res objectForKey:@"photos"] objectForKey:@"photo"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.tableView reloadData];
         });
-        
     }];
 }
 
