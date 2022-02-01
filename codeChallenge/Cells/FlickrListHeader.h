@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FlickrListHeader : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (nonatomic, weak) id <FlickrListHeaderDelegate> delegate;
+-(IBAction)clickDateToggle:(UISegmentedControl*)sender;
 @end
 
 NS_ASSUME_NONNULL_END

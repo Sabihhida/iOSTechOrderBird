@@ -3,3 +3,5 @@
 //
 
 #import "DetailViewController.h"
+#import "FlickrListHeader.h"
+#import "ViewController.h"

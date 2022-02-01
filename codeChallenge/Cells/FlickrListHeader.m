@@ -18,6 +18,7 @@
 
 -(IBAction)clickDateToggle:(UISegmentedControl*)sender {
     NSString *sorted = @"";
+    NSLog(@"%ld",(long)sender.selectedSegmentIndex);;
     switch (sender.selectedSegmentIndex) {
         case 0:
             sorted = @"date-taken-asc";

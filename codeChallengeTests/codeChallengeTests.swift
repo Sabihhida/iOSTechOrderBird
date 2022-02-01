@@ -7,15 +7,21 @@
 //
 
 import XCTest
+@testable import codeChallenge
 
 class codeChallengeTests: XCTestCase {
+    var sut: FlickrListHeader!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        let nibArray = Bundle.main.loadNibNamed("FlickrListHeader", owner: nil, options: nil)
+        sut = nibArray?.last as? FlickrListHeader
+            
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+        try super.tearDownWithError()
     }
 
     func testExample() throws {
@@ -28,6 +34,23 @@ class codeChallengeTests: XCTestCase {
         measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testDateSorted() {
+      // given
+      let segmentedControl = UISegmentedControl()
+
+      // when
+        XCTAssertEqual(0,0,"date is acescending")
+      segmentedControl.addTarget(
+        sut,
+        action: #selector(sut.clickDateToggle(_:)),
+        for: .valueChanged)
+      segmentedControl.sendActions(for: .valueChanged)
+
+      // then
+      XCTAssertEqual(1,1,"date is decending")
+
     }
 
 }
