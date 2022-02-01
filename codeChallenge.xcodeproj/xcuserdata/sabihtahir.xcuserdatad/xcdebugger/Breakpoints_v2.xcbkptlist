@@ -28,8 +28,8 @@
             filePath = "codeChallenge/Network/Network.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "getUrlRequest(url:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -44,8 +44,8 @@
             filePath = "codeChallenge/Network/Network.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "getUrlRequest(url:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>

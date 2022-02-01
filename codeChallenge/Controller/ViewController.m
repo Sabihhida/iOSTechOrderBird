@@ -19,7 +19,8 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    [self loadFlickrPhotos];
+    [self loadFlickrPhotos:nil];
+    self.title = @"List";
     
     UINib *cellNib = [UINib nibWithNibName:@"CustomCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"CustomCell"];
@@ -30,6 +31,19 @@
 }
 
 //TableViewDatasource
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    FlickrListHeader *headerView = (FlickrListHeader*)[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"FlickrListHeader"];
+    if (!headerView) {
+        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"FlickrListHeader" owner:nil options:nil];
+        headerView = [nibArray lastObject];
+    }
+    headerView.delegate = self;
+    return headerView;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return  44.0;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.photos.count;
@@ -47,18 +61,20 @@
     [self navigateDetailWithPhoto:[self.photos objectAtIndex:indexPath.row]];
 }
 
-- (void)loadFlickrPhotos {
-        
+- (void)loadFlickrPhotos:(NSDictionary*)optional {
+    
     __weak ViewController *weakSelf = self;
-    [[Network sharedManager] getFlickrListWithTag:@"cooking" pages:@"10" sorted:true completionHandler:^( id _Nonnull res) {
+    [[Network sharedManager] getFlickrListWithTag:@"cooking" pages:@"10" optional:optional completionHandler:^( id _Nonnull res) {
         weakSelf.photos = [[res objectForKey:@"photos"] objectForKey:@"photo"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.tableView reloadData];
         });
-
+        
     }];
 }
 
-
+-(void)clickSort:(NSString *)sort {
+    [self loadFlickrPhotos:@{@"sort":sort}];
+}
 
 @end

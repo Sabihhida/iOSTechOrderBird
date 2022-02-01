@@ -1,0 +1,36 @@
+//
+//  CollectionReusableView.m
+//  codeChallenge
+//
+//  Created by Sabih Tahir on 01/02/2022.
+//  Copyright © 2022 Fernando Suárez. All rights reserved.
+//
+
+#import "FlickrListHeader.h"
+
+
+@implementation FlickrListHeader
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+-(IBAction)clickDateToggle:(UISegmentedControl*)sender {
+    NSString *sorted = @"";
+    switch (sender.selectedSegmentIndex) {
+        case 0:
+            sorted = @"date-taken-asc";
+            break;
+        case 1:
+            sorted = @"date-taken-desc";
+            break;
+        default:
+            break;
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(clickSort:)]) {
+        [self.delegate clickSort:sorted];
+    }
+}
+@end

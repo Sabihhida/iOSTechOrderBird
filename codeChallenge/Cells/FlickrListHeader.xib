@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrListHeader" id="U6b-Vx-4bR" customClass="FlickrListHeader">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="20l-XR-d05">
+                    <rect key="frame" x="74.5" y="9" width="171" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="tbq-8O-0d1"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Ascending"/>
+                        <segment title="Desending"/>
+                    </segments>
+                    <connections>
+                        <action selector="clickDateToggle:" destination="U6b-Vx-4bR" eventType="valueChanged" id="hnO-bd-Vft"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="9Gg-ye-v9C"/>
+            <constraints>
+                <constraint firstItem="20l-XR-d05" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="h15-Qv-I8T"/>
+                <constraint firstItem="20l-XR-d05" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="jpK-Pl-vqK"/>
+            </constraints>
+            <connections>
+                <outlet property="segmentControl" destination="20l-XR-d05" id="fJZ-vY-Zjj"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="72.991071428571431"/>
+        </collectionReusableView>
+    </objects>
+</document>

@@ -7,9 +7,9 @@
 //
 
 @import UIKit;
+#import "FlickrListHeader.h"
 
-
-@interface ViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, FlickrListHeaderDelegate>
 
 
 @end

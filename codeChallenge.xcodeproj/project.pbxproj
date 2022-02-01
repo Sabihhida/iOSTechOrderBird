@@ -19,6 +19,8 @@
 		56DE712427A7BF1800488FF6 /* FlickrApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE712327A7BF1800488FF6 /* FlickrApi.swift */; };
 		56DE712727A7C1F900488FF6 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE712627A7C1F900488FF6 /* NetworkServiceError.swift */; };
 		56DE716E27A9537700488FF6 /* codeChallenge-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 56DE712027A7BE4C00488FF6 /* codeChallenge-Bridging-Header.h */; };
+		56DE717627A95D4C00488FF6 /* FlickrListHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DE717427A95D4C00488FF6 /* FlickrListHeader.m */; };
+		56DE717727A95D4C00488FF6 /* FlickrListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56DE717527A95D4C00488FF6 /* FlickrListHeader.xib */; };
 		760E7B0327A83DB800C1F5C6 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760E7B0227A83DB800C1F5C6 /* Photo.swift */; };
 		760E7B0527A843C500C1F5C6 /* CustomControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760E7B0427A843C500C1F5C6 /* CustomControls.swift */; };
 		76437B7727A8722F0020ADED /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76437B7627A8722F0020ADED /* DetailViewController.m */; };
@@ -43,6 +45,9 @@
 		56DE712127A7BE4D00488FF6 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		56DE712327A7BF1800488FF6 /* FlickrApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrApi.swift; sourceTree = "<group>"; };
 		56DE712627A7C1F900488FF6 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		56DE717327A95D4C00488FF6 /* FlickrListHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrListHeader.h; sourceTree = "<group>"; };
+		56DE717427A95D4C00488FF6 /* FlickrListHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlickrListHeader.m; sourceTree = "<group>"; };
+		56DE717527A95D4C00488FF6 /* FlickrListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlickrListHeader.xib; sourceTree = "<group>"; };
 		760E7B0227A83DB800C1F5C6 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		760E7B0427A843C500C1F5C6 /* CustomControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControls.swift; sourceTree = "<group>"; };
 		76437B7527A8722F0020ADED /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -157,6 +162,9 @@
 				3E15BBF8208774B10029597E /* CustomCell.h */,
 				3E15BBF9208774B10029597E /* CustomCell.m */,
 				3E15BBFB20879B4B0029597E /* CustomCell.xib */,
+				56DE717327A95D4C00488FF6 /* FlickrListHeader.h */,
+				56DE717427A95D4C00488FF6 /* FlickrListHeader.m */,
+				56DE717527A95D4C00488FF6 /* FlickrListHeader.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -219,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56DE717727A95D4C00488FF6 /* FlickrListHeader.xib in Resources */,
 				3E15BBEF208754FE0029597E /* LaunchScreen.storyboard in Resources */,
 				3E15BBEC208754FE0029597E /* Assets.xcassets in Resources */,
 				3E15BBFC20879B4B0029597E /* CustomCell.xib in Resources */,
@@ -241,6 +250,7 @@
 				76437B7A27A886070020ADED /* Router.swift in Sources */,
 				760E7B0327A83DB800C1F5C6 /* Photo.swift in Sources */,
 				3E15BBF2208754FE0029597E /* main.m in Sources */,
+				56DE717627A95D4C00488FF6 /* FlickrListHeader.m in Sources */,
 				3E15BBFA208774B10029597E /* CustomCell.m in Sources */,
 				76437B7727A8722F0020ADED /* DetailViewController.m in Sources */,
 				3E15BBE4208754FE0029597E /* AppDelegate.m in Sources */,
@@ -386,13 +396,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 56ETNADXPZ;
+				DEVELOPMENT_TEAM = SC7Q6V9V26;
 				INFOPLIST_FILE = codeChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nanosuarez.codeChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapmad.codeChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "codeChallenge/Headers/codeChallenge-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -407,13 +417,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 56ETNADXPZ;
+				DEVELOPMENT_TEAM = SC7Q6V9V26;
 				INFOPLIST_FILE = codeChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nanosuarez.codeChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapmad.codeChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "codeChallenge/Headers/codeChallenge-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
