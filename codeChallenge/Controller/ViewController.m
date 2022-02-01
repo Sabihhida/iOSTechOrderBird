@@ -10,8 +10,6 @@
 #import "CustomCell.h"
 //https://www.flickr.com/services/api/flickr.photos.search.html
 //https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=2ed35a9f4fda03bc96e73dbd03602780&photo_id=51854267235&format=json&nojsoncallback=1
-NSString *const FlickrAPIKey = @"2ed35a9f4fda03bc96e73dbd03602780";
-
 
 @interface ViewController ()
 @property (nonatomic, readwrite) NSArray *photos;
@@ -30,8 +28,6 @@ NSString *const FlickrAPIKey = @"2ed35a9f4fda03bc96e73dbd03602780";
 - (void)viewWillAppear:(BOOL)animated {
     
 }
-
-
 
 //TableViewDatasource
 
@@ -52,18 +48,15 @@ NSString *const FlickrAPIKey = @"2ed35a9f4fda03bc96e73dbd03602780";
 }
 
 - (void)loadFlickrPhotos {
-    
-    NSString *urlString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&per_page=10&format=json&nojsoncallback=1&extras=date_taken,description,tags,url_t,url_m", FlickrAPIKey, @"cooking"];
-    NSLog(@"%@",urlString);
+        
     __weak ViewController *weakSelf = self;
-    [[Network sharedManager] getUrlRequestWithUrl:urlString completionHandler:^( id _Nonnull res) {
+    [[Network sharedManager] getFlickrListWithTag:@"cooking" pages:@"10" sorted:true completionHandler:^( id _Nonnull res) {
         weakSelf.photos = [[res objectForKey:@"photos"] objectForKey:@"photo"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.tableView reloadData];
         });
 
     }];
-   
 }
 
 

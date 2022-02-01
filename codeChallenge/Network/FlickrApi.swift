@@ -11,45 +11,31 @@ import Metal
 
 protocol UrlRequestProtocol {
     
-    var scheme: String { get }
-    var host:String { get }
+    var baseURL: String { get }
+    var apiKey:String { get }
     
-    func finalUrl(_ urlString:String) -> URL?
 }
 
 class FlickrApi:UrlRequestProtocol {
-    static let shared: FlickrApi! = FlickrApi(host: "api.flickr.com", scheme: "https")
+    static let shared: FlickrApi = FlickrApi(apiKey: "2ed35a9f4fda03bc96e73dbd03602780")
 
-    var host: String
-    var scheme: String
+    var baseURL: String = "https://api.flickr.com/services/rest/?"
+    var apiKey: String
     
-    func finalUrl(_ urlString:String) -> URL? {
-        
-        var urlBuilder = URLComponents()
-        urlBuilder.scheme = scheme
-        urlBuilder.host = host
-        urlBuilder.path = urlString
-        return urlBuilder.url
+    init(apiKey:String) {
+        self.apiKey = apiKey
     }
     
-    func urlRequest(url: String, method: String, parameters:[String:Any] ) throws -> URLRequest? {
-        guard let completeUrl =  self.finalUrl(url) else {
-            throw NetworkServiceError.invalideURL
+    enum Methods:String {
+        case search = "flickr.photos.search"
+    }
+    
+    func finalUrl(params:[AnyHashable:Any], type:Methods) -> String {
+        var urlString = baseURL+"method="+type.rawValue+"&api_key="+self.apiKey+"&format=json&nojsoncallback=1"
+        for (key, value) in params {
+                urlString += "&\(key)=\(value)"
         }
-        var urlRequest = URLRequest(url: completeUrl)
-        urlRequest.httpMethod = method
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-     
-        urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-        
-        return urlRequest
+        return urlString
     }
-    init(host: String, scheme:String) {
-        self.host = host
-        self.scheme = scheme
-    }
-    
-    
     
 }
