@@ -31,4 +31,15 @@ extension UIImageView {
     }}
 
 
-
+extension UIViewController {
+@objc func showAlert(controller:UIViewController,msg:String, completion: (() -> Void)? = nil) {
+    
+    let alert = UIAlertController(title:nil,message: msg,preferredStyle: .alert)
+    alert.view.layer.cornerRadius = 1
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+            completion?()
+            alert.dismiss(animated: true)
+    }))
+    controller.present(alert,animated: true)
+}
+}

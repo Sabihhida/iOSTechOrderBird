@@ -66,7 +66,10 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.tableView reloadData];
         });
+    } failureHandller:^(NSString * _Nonnull __strong message) {
+        [weakSelf showAlertWithController:weakSelf msg:message completion:nil];
     }];
+   
 }
 
 -(void)clickSort:(NSString *)sort {
