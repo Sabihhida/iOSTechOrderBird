@@ -15,6 +15,7 @@ import UIKit
     case connectionFailed
     case serverError
     case invalideURL
+    case customError
 }
 
 extension NetworkServiceError: LocalizedError {
@@ -35,6 +36,8 @@ extension NetworkServiceError: LocalizedError {
             return NSLocalizedString("A user-friendly description of the error.", comment: "My error")
 
         case .invalideURL:
+            return NSLocalizedString("A user-friendly description of the error.", comment: "My error")
+        case .customError:
             return NSLocalizedString("A user-friendly description of the error.", comment: "My error")
 
         }

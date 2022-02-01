@@ -59,15 +59,19 @@
 }
 
 - (void)loadFlickrPhotos:(NSDictionary*)optional {
-    
+    [self.view showBlurLoader];
     __weak ViewController *weakSelf = self;
     [[Network sharedManager] getFlickrListWithTag:@"cooking" pages:@"10" optional:optional completionHandler:^( id _Nonnull res) {
         weakSelf.photos = [[res objectForKey:@"photos"] objectForKey:@"photo"];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.view removeBluerLoader];
             [weakSelf.tableView reloadData];
         });
-    } failureHandller:^(NSString * _Nonnull __strong message) {
-        [weakSelf showAlertWithController:weakSelf msg:message completion:nil];
+    } failureHandller:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.view removeBluerLoader];
+            [weakSelf showAlertWithController:weakSelf msg:error.localizedDescription completion:nil];
+        });
     }];
    
 }

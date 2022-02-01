@@ -5,7 +5,7 @@ import Foundation
 import UIKit
 
 typealias ResponseCompletion = ([AnyHashable : Any]) -> ()
-typealias failure = (String) -> ()
+typealias failure = (NSError) -> ()
 
 @objc class Network:NSObject {
     
@@ -29,10 +29,10 @@ typealias failure = (String) -> ()
         debugPrint(urlString)
         let task = URLSession.shared.dataTask(with: urlString) {(data, response, error) in
             if let err = error {
-                failureHandller(NetworkServiceError.failedRequest.errorDescription  ?? "")
+                failureHandller(err as NSError)
             } else {
                 guard let data = data else {
-                    failureHandller(NetworkServiceError.failedRequest.errorDescription ?? "")
+                    failureHandller(NetworkServiceError.noData as NSError)
                     return
                 }
                 
@@ -40,8 +40,8 @@ typealias failure = (String) -> ()
                 do {
                     dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any]
                     completionHandler(dictionary ?? [:])
-                } catch let err as Error{
-                    failureHandller(NetworkServiceError.invalidResponse.errorDescription ?? "")
+                } catch let err as Error {
+                    failureHandller(err as NSError)
                 }
             }
         }
