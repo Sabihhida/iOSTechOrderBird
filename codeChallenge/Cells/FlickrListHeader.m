@@ -21,10 +21,10 @@
     NSLog(@"%ld",(long)sender.selectedSegmentIndex);;
     switch (sender.selectedSegmentIndex) {
         case 0:
-            sorted = @"date-taken-asc";
+            sorted = @"date-posted-asc";
             break;
         case 1:
-            sorted = @"date-taken-desc";
+            sorted = @"date-posted-desc";
             break;
         default:
             break;

@@ -14,7 +14,9 @@ typealias ResponseCompletion = ([AnyHashable : Any]) -> ()
     @objc func getFlickrList(tag: String, pages: String,optional: [String:String]?, completionHandler: @escaping ResponseCompletion) {
         var params = ["tags":tag,"extras":"date_taken,description,tags,url_t,url_m","per_page":pages]
         if let optionalParams = optional, !optionalParams.isEmpty {
-            params = optionalParams
+            for (key, value) in optionalParams {
+                    params[key] = value
+                }
         }
         let urlString = FlickrApi.shared.finalUrl(params:params ,type: .search)
         self.getUrlRequest(url: urlString, completionHandler: completionHandler)

@@ -59,6 +59,7 @@
 }
 
 - (void)loadFlickrPhotos:(NSDictionary*)optional {
+    
     __weak ViewController *weakSelf = self;
     [[Network sharedManager] getFlickrListWithTag:@"cooking" pages:@"10" optional:optional completionHandler:^( id _Nonnull res) {
         weakSelf.photos = [[res objectForKey:@"photos"] objectForKey:@"photo"];
@@ -69,7 +70,7 @@
 }
 
 -(void)clickSort:(NSString *)sort {
-    [self loadFlickrPhotos:@{@"sort":sort}];
+    [self loadFlickrPhotos:@{@"sort":sort,@"geo_context":@"1"}];
 }
 
 @end
